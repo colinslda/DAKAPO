@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirection vers Login</title>
+  <meta http-equiv="refresh" content="0;url=login.html">
+  <script>
+    // Fallback au cas où la redirection par meta ne fonctionnerait pas
+    window.location.href = "login.html";
+  </script>
+</head>
+<body>
+  <p>Redirection en cours vers la page de connexion...</p>
+</body>
+</html>
