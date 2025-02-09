@@ -26,7 +26,9 @@
     // Initialisation de SupaBase
     const supabaseUrl = 'https://cjdqdixrvvrdwssoasel.supabase.co';
     const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNqZHFkaXhydnZyZHdzc29hc2VsIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczOTA5ODI2NSwiZXhwIjoyMDU0Njc0MjY1fQ._SkGg4Lt1sdrz8WhxaeOS0npZ2gPCZi5SBLBatYN-KE';
-    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+    const { createClient } = supabase;
+const supabaseClient = createClient(supabaseUrl, supabaseKey);
+
 
     document.getElementById('login-form').addEventListener('submit', async (e) => {
       e.preventDefault();
