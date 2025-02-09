@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DaCapo</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <!-- Import des polices Poppins et DM Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>DaCapo</h1>
+    <nav>
+      <button class="tab-button active" data-tab="repertoire">Répertoire</button>
+      <button class="tab-button" data-tab="journal">Journal</button>
+      <button class="tab-button" data-tab="metronome">Métronome</button>
+    </nav>
+  </header>
+  <main>
+    <!-- Onglet 1 : Répertoire de Répétition -->
+    <section id="repertoire" class="tab-content active">
+      <h2>Répertoire de Répétition</h2>
+      <button id="open-repertoire-form">Ajouter une pièce</button>
+      <div id="repertoire-form-container" class="form-container" style="display:none;">
+        <form id="repertoire-form">
+          <label for="compositeur">Compositeur :</label>
+          <input type="text" id="compositeur" required>
+          <label for="titre">Titre :</label>
+          <input type="text" id="titre" required>
+          <label for="categorie">Catégorie :</label>
+          <select id="categorie">
+            <option value="Concerto">Concerto</option>
+            <option value="Sonate">Sonate</option>
+            <option value="Pièce solo">Pièce solo</option>
+            <option value="Orchestre">Orchestre</option>
+            <option value="Étude/Caprice">Étude/Caprice</option>
+          </select>
+          <div class="form-actions">
+            <button type="submit">Ajouter</button>
+            <button type="button" id="close-repertoire-form">Annuler</button>
+          </div>
+        </form>
+      </div>
+      <div id="repertoire-list">
+        <!-- Les cartes de pièces triées par catégorie s'affichent ici -->
+      </div>
+    </section>
+
+    <!-- Onglet 2 : Journal de Bord de Répétition -->
+    <section id="journal" class="tab-content">
+      <h2>Journal de Bord de Répétition</h2>
+      <form id="journal-form" class="form-container">
+        <label for="piece-select">Sélectionner la pièce :</label>
+        <select id="piece-select">
+          <option value="">-- Choisissez une pièce --</option>
+        </select>
+        <label for="note-content">Note :</label>
+        <textarea id="note-content" placeholder="Écris ta note ici..." required></textarea>
+        <button type="submit">Ajouter la note</button>
+      </form>
+      <div id="journal-sort">
+        <label for="sort-select">Trier par :</label>
+        <select id="sort-select">
+          <option value="date">Date</option>
+          <option value="piece">Pièce</option>
+        </select>
+        <button id="sort-button">Trier</button>
+      </div>
+      <div id="journal-list">
+        <!-- Les entrées de journal s'affichent ici sous forme de cartes -->
+      </div>
+    </section>
+
+    <!-- Onglet 3 : Métronome -->
+    <section id="metronome" class="tab-content">
+      <h2>Métronome</h2>
+      <div id="metronome-container">
+        <div id="metronome-visual"></div>
+      </div>
+      <div id="metronome-controls">
+        <div class="tempo-control">
+          <button id="decrease-tempo">–</button>
+          <input type="range" id="tempo-slider" value="60" min="30" max="240">
+          <button id="increase-tempo">+</button>
+          <span id="tempo-display">60 BPM</span>
+        </div>
+        <button id="start-stop">Démarrer</button>
+      </div>
+    </section>
+  </main>
+  
+  <script src="script.js"></script>
+  <script>
+    // Enregistrement du Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(function(registration) {
+            console.log('ServiceWorker enregistré avec succès : ', registration.scope);
+          }, function(err) {
+            console.log('Échec de l’enregistrement du ServiceWorker : ', err);
+          });
+      });
+    }
+  </script>
+</body>
+</html>
