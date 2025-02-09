@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DaCapo - Inscription</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
   <div class="auth-container">
@@ -22,27 +21,41 @@
     <p>Déjà inscrit ? <a href="login.html">Se connecter</a></p>
   </div>
 
-  <script>
-    const supabaseUrl = 'https://cjdqdixrvvrdwssoasel.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNqZHFkaXhydnZyZHdzc29hc2VsIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczOTA5ODI2NSwiZXhwIjoyMDU0Njc0MjY1fQ._SkGg4Lt1sdrz8WhxaeOS0npZ2gPCZi5SBLBatYN-KE';
-    const { createClient } = supabase;
-const supabaseClient = createClient(supabaseUrl, supabaseKey);
+  <script type="module">
+    // Importer les modules Firebase nécessaires
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-auth.js";
 
+    // Configuration Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyDepmXmfXTRwRjX610Q7KX6XPrHMWdgR_8",
+      authDomain: "dacapo-25d3e.firebaseapp.com",
+      projectId: "dacapo-25d3e",
+      storageBucket: "dacapo-25d3e.firebasestorage.app",
+      messagingSenderId: "149584465970",
+      appId: "1:149584465970:web:c18e47ca6e03228900ec2b",
+      measurementId: "G-6LNF70B3QJ"
+    };
 
-    document.getElementById('signup-form').addEventListener('submit', async (e) => {
+    // Initialiser Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Gestion de la soumission du formulaire d'inscription
+    const signupForm = document.getElementById('signup-form');
+    signupForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const first_name = document.getElementById('first_name').value;
+      const firstName = document.getElementById('first_name').value;
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
-      const { data, error } = await supabase.auth.signUp(
-        { email, password },
-        { data: { first_name } }
-      );
-      if (error) {
-        alert(error.message);
-      } else {
-        // Redirige vers la page principale après inscription
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        // Mise à jour du profil pour enregistrer le prénom
+        await updateProfile(auth.currentUser, { displayName: firstName });
+        // Inscription réussie : redirection vers main.html
         window.location.href = 'main.html';
+      } catch (error) {
+        alert(error.message);
       }
     });
   </script>
