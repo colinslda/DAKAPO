@@ -235,6 +235,112 @@ form textarea {
   flex: 1;
 }
 
+/* style.css */
+
+/* --- Style Global --- */
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  background-color: #fff;
+  color: #000;
+}
+
+/* En-tête et navigation */
+header {
+  background-color: #fff;
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 2px solid #000;
+}
+
+h1 {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+nav {
+  margin-top: 1rem;
+}
+
+nav .tab-button,
+#logout-btn {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav .tab-button.active,
+nav .tab-button:hover,
+#logout-btn:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+main {
+  padding: 1rem;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* --- Formulaires & Conteneurs d'authentification --- */
+.auth-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border: 2px solid #000;
+  border-radius: 5px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.auth-container input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.auth-container button {
+  padding: 0.5rem;
+  border: 2px solid #000;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.auth-container button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* --- Formulaires généraux (pour répertoire, journal, etc.) --- */
+.form-container {
+  background-color: #f9f9f9;
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* (Ici, tu peux intégrer les styles déjà définis pour répertoire, journal et métronome) */
+
 /* Responsive */
 @media (min-width: 768px) {
   nav .tab-button {
