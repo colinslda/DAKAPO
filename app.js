@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
   // Initialisation de Supabase
   const supabaseUrl = 'https://cjdqdixrvvrdwssoasel.supabase.co';
-  const supabaseKey = 'TON_SUPABASE_KEY';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNqZHFkaXhydnZyZHdzc29hc2VsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzkwOTgyNjUsImV4cCI6MjA1NDY3NDI2NX0.wxc8fZn_3LHLLRZ1FZRwF39z3qy-rkC57yigpI88W1Q';
   const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
   // --- Navigation entre onglets ---
